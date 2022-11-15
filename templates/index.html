@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <title>Página principal</title>
+    <meta name="description" content="Página principal">
+    <meta name="keywords" content="HTML template - plantilla">
+</head>
+
+<body>
+    {% extends "base.html" %}
+    {% block title %}Página principal{% endblock %}
+    {% block content %}
+    
+    <p align="center">Proyecto para que realiza el proceso de seleccion por tamaño para cajos de carton para un debido tratamiento de reciclaje</p>
+    <img src="{{ url_for('static', filename='Ejemplo3.jpg') }}"
+                     style="max-width: 1600px"
+                     alt="grafica">
+    <img src="{{ url_for('static', filename='Ejemplo4.jpg') }}"
+    style="max-width: 1600px"
+    alt="grafica">                
+    {% endblock %}
+</body>
+</html>
