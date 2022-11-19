@@ -17,36 +17,9 @@ conexion=psycopg2.connect(user='xxbafeigeplqzf',
 
 cursor=conexion.cursor()
 
-@app.route('/',methods=['GET', 'POST'])
-def index(name=None):
-    return render_template('index.html',name=name)
 
-
-@app.route("/getData",methods=("POST","GET"))
-def getData():
-    cursor
-    sql=("SELECT * from datosrecibidos ")
-    cursor.execute(sql)
-    data = cursor.fetchall()
-    df = pd.DataFrame(data,columns=["id",'cajas_p','cajas_g'])
-    df['cajas_p']=df['cajas_p'].astype('int64')
-    df['cajas_g']=df['cajas_g'].astype('int64')
-    print(df.info())
-    suma_p=df['cajas_p'].sum()
-    suma_g=df['cajas_g'].sum()
-    datos=[suma_p,suma_g]
-    ejex=['cajas pequeñas','cajas grandes']
-    fig, ax = plt.subplots(1,2)
-    normdata= colors.Normalize(0, max(datos))
-    colormap = cm.get_cmap("Blues")
-    colores =colormap(normdata(datos))
-    ax[0].bar(ejex,datos)
-    ax[1].pie(datos,labels=ejex,autopct="%0.1f %%",colors=colores)
-    plt.savefig("static/Ejemplo2.jpg")
-    return render_template('index.html')
-
-@app.route("/prueba",methods=("POST","GET"))
-def prueba():
+@app.route("/",methods=("POST","GET"))
+def index():
     cursor
     sql=("SELECT * from datosrecibidos ")
     cursor.execute(sql)
@@ -83,6 +56,10 @@ def prueba():
     plt.savefig("static/Ejemplo4.jpg")
     plt.close()
     return render_template('index.html')    
+
+@app.route("/contacto",methods=("POST","GET"))
+def contactos():
+    return render_template('contact.html')
 
 if __name__ == '__main__':
     app.run(port=5432)

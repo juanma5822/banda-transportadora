@@ -13,7 +13,7 @@ GPIO.setup(sensor1, GPIO.IN)
 GPIO.setup(sensor2, GPIO.IN)
 #Salidas 
 motor_banda = 18
-servo1 = 17
+servo1 = 17    
 servo2 = 27
 motor_caja_grande1 = 5
 motor_caja_grande2 = 6
@@ -42,7 +42,7 @@ try:
 
  cursor=conexion.cursor()
 
- sql='INSERT INTO datosrecibidos (caja_grande,caja_pequeña) VALUES (%s,%s)'
+ sql='INSERT INTO datosrecibidos (caja_grande,caja_pequena) VALUES (%s,%s)'
  print('base conectada')
 except:
  print('no se conecto')
