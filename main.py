@@ -51,7 +51,7 @@ def index():
         i+=1
     plt.savefig("static/Ejemplo3.jpg")
     plt.close()
-    desfase = (0.2, 0.1)
+    desfase = (0, 0.1)
     plt.pie(datos,labels=ejex,autopct="%0.1f %%",colors=colores,explode=desfase)
     plt.savefig("static/Ejemplo4.jpg")
     plt.close()
